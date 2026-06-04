@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+
+# 360 video assets — too large for git (copy from computer_vision_playground/vp_assets/vp_360/)
+gs_assets/*.mp4
