@@ -83,7 +83,7 @@ class GsMainWindow(QMainWindow):
         right_split = QSplitter(Qt.Orientation.Vertical)
         right_split.addWidget(self._viewer)
         right_split.addWidget(self._carousel)
-        right_split.setSizes([620, 230])
+        right_split.setSizes([580, 280])
         right_split.setStyleSheet(
             "QSplitter::handle { background:#1a1a2a; height:2px; }")
 

@@ -8,8 +8,6 @@ during navigation so there is no snapping.
 """
 from __future__ import annotations
 
-import subprocess
-import threading
 from pathlib import Path
 
 import cv2
@@ -159,9 +157,11 @@ class GsCarouselView(QGraphicsView):
         vr = self.viewport().rect()
         if vr.isEmpty():
             return
-        _SIDE = 120
-        vis_w = CARD_W + 2 * _SIDE
-        vis_h = vis_w * vr.height() / max(vr.width(), 1)
+        # Drive the fit from height: centre card occupies exactly 50 % of the
+        # widget's height.  Width is derived from the viewport aspect ratio so
+        # the scene is never distorted.  Side cards fill the remaining width.
+        vis_h = CARD_H * 2.0
+        vis_w = vis_h * vr.width() / max(vr.height(), 1)
         self.fitInView(
             QRectF(-vis_w / 2, -vis_h / 2, vis_w, vis_h),
             Qt.AspectRatioMode.IgnoreAspectRatio,
